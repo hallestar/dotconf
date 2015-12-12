@@ -15,15 +15,17 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'rdnetto/YCM-Generator'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/nerdtree'
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-Plugin 'scrooloose/nerdcommenter'
-
-Plugin 'xolox/vim-misc'  " required by lua.vim
-Plugin 'xolox/vim-lua-ftplugin'  " Lua file type plug-in for the Vim text editor
 "Bundle 'powerline/powerline'
 "Bundle 'thinca/vim-ref'
 "Bundle 'gmarik/vundle'
 "Bundle 'Lokaltog/vim-powerline'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'xolox/vim-misc'  " required by lua.vim
+Plugin 'xolox/vim-lua-ftplugin'  " Lua file type plug-in for the Vim text editor
+Plugin 'fatih/vim-go'
+Plugin 'cespare/vim-golang'
+
 
 call vundle#end()
 "filetype on
@@ -37,15 +39,20 @@ syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
+
 if has('gui_running')
     colorscheme solarized
     map  <silent>  <S-Insert>  "+p
     imap <silent>  <S-Insert>  <Esc>"+pa
+
     set guifont=Microsoft\ YaHei\ Mono\ 11.5
 endif
 
 set nocompatible
 set laststatus=2
+
+
+
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
@@ -341,7 +348,34 @@ nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-@>f :cs find f <C-R>=expand("<cword>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cword>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
+""""""""""""""""""""""""""""""""""""""""""
+"""indentLine
+""""""""""""""""""""""""""""""""""""""""""
+"autocmd BufRead * :IndentLinesEnable
+"function! InitIndentLine()
+"    let g:indent_guides_auto_colors = 0
+"    let g:indent_guides_guide_size = 1 
+"    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+"    hi IndentGuidesOdd guibg=red ctermbg=3
+"    hi IndentGuidesEven guibg=green ctermbg=4
+"endfunction
+"call InitIndentLine()
+""let g:indentLine_color_term = 100
+""let g:indentLine_char = '︙'
+"map <leader>il :IndentLinesToggle<CR>
+"function! SetColorColumn()
+"
+"	let col_num = virtcol(".")
+"	let cc_list = split(&cc, ',')
+"	if count(cc_list, string(col_num)) <= 0
+"		execute "set cc+=".col_num
+"	else
+"		execute "set cc-=".col_num
+"	endif
+"endfunction^
+"map ,ch :call SetColorColumn()<CR>
+"call SetColorColumn()
 """"""""""""""""""""""""""""""""""""""""""
 """YouComlementMe
 """"""""""""""""""""""""""""""""""""""""""
@@ -429,3 +463,33 @@ if exists('$TMUX')
     "set term=screen
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"go bar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_type_go = {  
+    \ 'ctagstype' : 'go',  
+    \ 'kinds'     : [  
+        \ 'p:package',  
+        \ 'i:imports:1',  
+        \ 'c:constants',  
+        \ 'v:variables',  
+        \ 't:types',  
+        \ 'n:interfaces',  
+        \ 'w:fields',  
+        \ 'e:embedded',  
+        \ 'm:methods',  
+        \ 'r:constructor',  
+        \ 'f:functions'  
+    \ ],  
+    \ 'sro' : '.',  
+    \ 'kind2scope' : {  
+        \ 't' : 'ctype',  
+        \ 'n' : 'ntype'  
+    \ },  
+    \ 'scope2kind' : {  
+        \ 'ctype' : 't',  
+        \ 'ntype' : 'n'  
+    \ },  
+    \ 'ctagsbin'  : 'gotags',  
+    \ 'ctagsargs' : '-sort -silent'  
+\ } 
