@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/hzc/.oh-my-zsh
+
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,17 +50,17 @@ ZSH_THEME="muse"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python tmux)
+plugins=(git python tmux svn)
 
 # User configuration
 
-export PATH="/home/hzc/bin:/home/hzc/.pyenv/shims:/home/hzc/.pyenv/bin:/home/hzc/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=zh_CN.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -68,11 +69,13 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+export EDITOR='vim'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -83,25 +86,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 ZSH_THEME="candy"  
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 export PATH=$HOME/bin:$PATH
+export PYENV_ROOT="$HOME/.pyenv"
+if [[ -d $PYENV_ROOT ]]; then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
 
-alias grepexp='find . -name "*.cpp" -o -name "*.h" | xargs grep --color -n -H $1'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias tmux="TERM=screen-256color tmux"
 make_file_backup(){
     mv $1 $1.bak
 }
-alias bak=make_file_backup
 func_find_all()
 {
     find . -type f | xargs grep -wn --color $1
 }
-alias findall=func_find_all
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -109,26 +107,64 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+alias bak=make_file_backup
+alias findall=func_find_all
+alias grepexp='find . -name "*.cpp" -o -name "*.h" | xargs grep --color -n -H $1'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 alias grep='grep --color=auto'
+alias agpp="ag --cpp"
+alias ag="ag --path-to-ignore ~/.ag/.ignore"
+alias tmux="tmux -2"
 
 ulimit -c unlimited
 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH 
-if [[ -z $TMUX ]]; then
-    #if [ -e /usr/share/terminfo/x/xterm+256color ]; then # may be xterm-256 depending on your distro
-        #export TERM='xterm-256color'
-    #else
-        export TERM='xterm'
-    #fi
-else
-    if [ -e /usr/share/terminfo/s/screen-256color ]; then
-        export TERM='screen-256color'
-    else
-        export TERM='screen'
+#if [[ -z $TMUX ]]; then
+#    if [ -e /usr/share/terminfo/x/xterm+256color ]; then # may be xterm-256 depending on your distro
+#        #export TERM='xterm-256color'
+#    else
+#        export TERM='xterm'
+#    fi
+#else
+#    if [ -e /usr/share/terminfo/s/screen-256color ]; then
+#        export TERM='screen-256color'
+#    else
+#        export TERM='screen'
+#    fi
+#fi
+
+export ZSH_TMUX_TERM=screen
+export TERM=xterm
+
+function gdbp_usage
+{
+    echo "gdbp want 1 arg!"
+    echo "  gdbp server_name"
+    return 1
+}
+
+source ~/shell_config.sh
+function gdbp
+{
+    if [[ $# -lt 1 ]]; then
+        gdbp_usage
     fi
-fi
+
+    if [[ $? != 0 ]]; then
+        return
+    fi
+
+    get_progname $1
+    echo $prog_name
+    pid=$(ps -u $(basename $HOME) | grep $prog_name | awk '{print $1}')
+    gdb -p $pid
+}
+
+

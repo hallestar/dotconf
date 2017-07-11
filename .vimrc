@@ -5,26 +5,26 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-scripts/TagHighlight'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'bling/vim-airline'
-Bundle 'majutsushi/tagbar'
-"Bundle 'Yggdroot/indentLine'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'rdnetto/YCM-Generator'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'scrooloose/nerdtree'
-"Bundle 'powerline/powerline'
-"Bundle 'thinca/vim-ref'
-"Bundle 'gmarik/vundle'
-"Bundle 'Lokaltog/vim-powerline'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-scripts/TagHighlight'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+"Plugin 'Yggdroot/indentLine'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'rdnetto/YCM-Generator'
+"Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'powerline/powerline'
+"Plugin 'thinca/vim-ref'
+"Plugin 'gmarik/vundle'
+"Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-misc'  " required by lua.vim
 Plugin 'xolox/vim-lua-ftplugin'  " Lua file type plug-in for the Vim text editor
 Plugin 'fatih/vim-go'
-Plugin 'cespare/vim-golang'
+Plugin 'vim-scripts/a.vim'
 
 
 call vundle#end()
@@ -256,6 +256,8 @@ let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树
 let Tlist_Show_menu = 1
 let Tlist_Show_one_File = 1
 let Tlist_Exit_OnlyWindow = 1
+set tags=tags;
+set autochdir
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""powerline
