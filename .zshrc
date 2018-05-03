@@ -54,13 +54,14 @@ plugins=(git python tmux svn)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export HZC_PATH="$HOME/install/bin"
+export PATH="$HZC_PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-export LANG=zh_CN.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -69,6 +70,8 @@ export LANG=zh_CN.UTF-8
 #   export EDITOR='mvim'
 # fi
 
+alias vim="$HZC_PATH/vim"
+alias vi="vim"
 export EDITOR='vim'
 
 # Compilation flags
@@ -91,7 +94,12 @@ export PYENV_ROOT="$HOME/.pyenv"
 if [[ -d $PYENV_ROOT ]]; then
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
+
+#export PATH="$HOME/.pyenv/bin:$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 make_file_backup(){
     mv $1 $1.bak
@@ -164,6 +172,10 @@ function gdbp
     get_progname $1
     echo $prog_name
     pid=$(ps -u $(basename $HOME) | grep $prog_name | awk '{print $1}')
+    if [[ $pid == "" ]]; then
+        echo "$1 not found~"
+        return
+    fi
     gdb -p $pid
 }
 
