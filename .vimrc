@@ -27,9 +27,9 @@ Plugin 'vim-scripts/lua.vim'
 Plugin 'fatih/vim-go'
 Plugin 'vim-scripts/a.vim'
 "Plugin 'Shougo/neocomplete.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'shawncplus/phpcomplete.vim'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+"Plugin 'shawncplus/phpcomplete.vim'
 
 
 call vundle#end()

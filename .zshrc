@@ -1,4 +1,5 @@
 # Path to your oh-my-zsh installation.
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 export ZSH=$HOME/.oh-my-zsh
 
@@ -6,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="muse"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -70,6 +71,7 @@ export LANG=en_US.UTF-8
 #   export EDITOR='mvim'
 # fi
 
+#alias vim="$HZC_PATH/vim"
 alias vi="vim"
 export EDITOR='vim'
 
