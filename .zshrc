@@ -70,7 +70,6 @@ export LANG=en_US.UTF-8
 #   export EDITOR='mvim'
 # fi
 
-alias vim="$HZC_PATH/vim"
 alias vi="vim"
 export EDITOR='vim'
 
