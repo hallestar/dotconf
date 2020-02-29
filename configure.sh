@@ -12,6 +12,7 @@ if [ -f $HOME/.zshrc ] || [ -h $HOME/.zshrc ]; then
 fi
 echo "ln -s $PWD/.zshrc $HOME/.zshrc ..."
 ln -s $PWD/.zshrc $HOME/.zshrc
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "done..."
 
 # vim
@@ -20,5 +21,6 @@ if [ -f $HOME/.vimrc ] || [ -h $HOME/.vimrc ]; then
 fi
 echo "ln -s $PWD/.vimrc $HOME/.vimrc ..."
 ln -s $PWD/.vimrc $HOME/.vimrc
+git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 echo "done..."
 
