@@ -24,7 +24,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-misc'  " required by lua.vim
 Plugin 'vim-scripts/lua.vim'
 "Plugin 'xolox/vim-lua-ftplugin'  " Lua file type plug-in for the Vim text editor
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'vim-scripts/a.vim'
 "Plugin 'Shougo/neocomplete.vim'
 "Plugin 'SirVer/ultisnips'
