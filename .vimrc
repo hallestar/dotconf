@@ -1,9 +1,13 @@
 set nocompatible
 filetype off
-"git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
+if exists("$HOME")
+    let plugin_dir = $HOME . '/.vim/bundle/'
+else
+    let plugin_dir = '.vim/bundle/'
+endif
+let init_file_path=plugin_dir.'Vundle.vim'
+exe 'set rtp+=' . expand(init_file_path)
+call vundle#begin(plugin_dir)
 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/TagHighlight'
