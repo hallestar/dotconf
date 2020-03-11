@@ -20,19 +20,24 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: checkout
+    - name: Checkout
       uses: actions/checkout@v2
 
     - name: Install vim plugins
-      run: echo ${{ HOME }}
-            #cp -avf dotconf/.vimrc $HOME
-            #vim --cmd "silent" -c "PluginInstall" -c "qa!"
+      run: |
+          mkdir -v vim
+          mkdir -pv .vim/bundle
+          git clone https://github.com/gmarik/Vundle.vim.git .vim/bundle/Vundle.vim
+          vim -u $GITHUB_WORKSPACE/dotconf/.vimrc +PluginInstall +qall
+          cp -R $GITHUB_WORKSPACE/dotconf/.vimrc vim/
+          cp -R $GITHUB_WORKSPACE/.vim vim/
+          tar cvfz vim.tar.gz vim
    
       #- name: Create Release
       #    id: create_release
       #    uses: actions/create-release@v1
       #    env:
-      #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #      GITHUB_TOKEN: ${{ secrets.s1 }}
       #    with:
       #      tag_name: ${{ github.ref }}
       #      release_name: Release ${{ github.ref }}
@@ -43,7 +48,7 @@ jobs:
       #    id: upload-release-asset 
       #    uses: actions/upload-release-asset@v1
       #    env:
-      #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #      GITHUB_TOKEN: ${{ secrets.s1 }}
       #    with:
       #      upload_url: ${{ steps.create_release.outputs.upload_url }}
       #      asset_path: ./my-artifact.zip
