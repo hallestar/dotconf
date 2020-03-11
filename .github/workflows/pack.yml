@@ -24,12 +24,14 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install vim plugins
+      env:
+        VUNDLE_ROOT: ".vim/bundle/"
       run: |
           echo $GITHUB_WORKSPACE
           echo pwd
           mkdir -v vim
-          mkdir -pv .vim/bundle
-          git clone https://github.com/gmarik/Vundle.vim.git .vim/bundle/Vundle.vim
+          mkdir -pv $VUNDLE_ROOT
+          git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_ROOT/Vundle.vim
           vim -u $GITHUB_WORKSPACE/.vimrc +PluginInstall +qall
           cp -R $GITHUB_WORKSPACE/.vimrc vim/
           cp -R $GITHUB_WORKSPACE/.vim vim/

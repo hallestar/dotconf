@@ -1,9 +1,10 @@
 set nocompatible
 filetype off
-if exists("$HOME")
-    let plugin_dir = $HOME . '/.vim/bundle/'
+if exists("$VUNDLE_ROOT")
+    "let plugin_dir = '.vim/bundle/'
+    let plugin_dir = $VUNDLE_ROOT
 else
-    let plugin_dir = '.vim/bundle/'
+    let plugin_dir = $HOME . '/.vim/bundle/'
 endif
 let init_file_path=plugin_dir.'Vundle.vim'
 exe 'set rtp+=' . expand(init_file_path)
