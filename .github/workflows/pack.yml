@@ -24,8 +24,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install vim plugins
-        run: |
-            echo ${{ HOME }}
+        run: echo ${{ HOME }}
             #cp -avf dotconf/.vimrc $HOME
             #vim --cmd "silent" -c "PluginInstall" -c "qa!"
    
