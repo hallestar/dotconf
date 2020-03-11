@@ -25,11 +25,13 @@ jobs:
 
     - name: Install vim plugins
       run: |
+          echo $GITHUB_WORKSPACE
+          echo pwd
           mkdir -v vim
           mkdir -pv .vim/bundle
           git clone https://github.com/gmarik/Vundle.vim.git .vim/bundle/Vundle.vim
-          vim -u $GITHUB_WORKSPACE/dotconf/.vimrc +PluginInstall +qall
-          cp -R $GITHUB_WORKSPACE/dotconf/.vimrc vim/
+          vim -u $GITHUB_WORKSPACE/.vimrc +PluginInstall +qall
+          cp -R $GITHUB_WORKSPACE/.vimrc vim/
           cp -R $GITHUB_WORKSPACE/.vim vim/
           tar cvfz vim.tar.gz vim
    
