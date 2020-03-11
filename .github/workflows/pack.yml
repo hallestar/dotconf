@@ -32,10 +32,11 @@ jobs:
           mkdir -v vim
           mkdir -pv $VUNDLE_ROOT
           git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_ROOT/Vundle.vim
-          vim -u $GITHUB_WORKSPACE/.vimrc +PluginInstall +qall
+          vim --not-a-term -u $GITHUB_WORKSPACE/.vimrc +PluginInstall +qall
           cp -R $GITHUB_WORKSPACE/.vimrc vim/
           cp -R $GITHUB_WORKSPACE/.vim vim/
-          tar cvfz vim.tar.gz vim
+          tar cfz vim.tar.gz vim
+          ls
    
       #- name: Create Release
       #    id: create_release
