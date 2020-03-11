@@ -45,11 +45,15 @@ set showcmd
 set wildmode=longest,list,full 
 set wildmenu
 syntax on
+
 " theme
 let g:solarized_termcolors=256
 syntax enable
 set background=dark
-colorscheme solarized
+let solarized_dir = plugin_dir . 'vim-colors-solarized/colors/solarized.vim'
+if filereadable(solarized_dir)
+    colorscheme solarized
+endif
 " theme
 
 set nocompatible
