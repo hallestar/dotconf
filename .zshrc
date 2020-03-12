@@ -101,7 +101,7 @@ if [[ -n $ZSH_CUSTOM ]]; then
 fi
 export EDITOR='vim'
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bold,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#36c6ff,bold,underline"
 
 # < ------------------------------------- env ------------------------------------------<
 

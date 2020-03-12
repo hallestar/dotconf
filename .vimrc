@@ -1,9 +1,14 @@
 set nocompatible
 filetype off
-"git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
+if exists("$VUNDLE_ROOT")
+    "let plugin_dir = '.vim/bundle/'
+    let plugin_dir = $VUNDLE_ROOT
+else
+    let plugin_dir = $HOME . '/.vim/bundle/'
+endif
+let init_file_path=plugin_dir.'Vundle.vim'
+exe 'set rtp+=' . expand(init_file_path)
+call vundle#begin(plugin_dir)
 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/TagHighlight'
@@ -40,11 +45,15 @@ set showcmd
 set wildmode=longest,list,full 
 set wildmenu
 syntax on
+
 " theme
 let g:solarized_termcolors=256
 syntax enable
 set background=dark
-colorscheme solarized
+let solarized_dir = plugin_dir . 'vim-colors-solarized/colors/solarized.vim'
+if filereadable(solarized_dir)
+    colorscheme solarized
+endif
 " theme
 
 set nocompatible
