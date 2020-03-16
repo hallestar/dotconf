@@ -94,6 +94,7 @@ set tags=./tags,tags
 
 set foldmethod=syntax
 set nofoldenable
+set visualbell
 
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
