@@ -38,6 +38,7 @@ jobs:
           cp -v $GITHUB_WORKSPACE/.vimrc $ASSET_DIR
           cp -v $GITHUB_WORKSPACE/.zshrc $ASSET_DIR
           cp -v $GITHUB_WORKSPACE/.tmux.conf $ASSET_DIR
+          cp -v $GITHUB_WORKSPACE/configure.sh $ASSET_DIR
           cp -R $GITHUB_WORKSPACE/.vim $ASSET_DIR
           tar cfz $ASSET_NAME $ASSET_DIR
    
