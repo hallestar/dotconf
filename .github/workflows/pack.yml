@@ -35,7 +35,9 @@ jobs:
           git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_ROOT/Vundle.vim
           vim --not-a-term -u $GITHUB_WORKSPACE/.vimrc +PluginInstall +qall
           mkdir -v $ASSET_DIR
-          cp -R $GITHUB_WORKSPACE/.vimrc $ASSET_DIR
+          cp -v $GITHUB_WORKSPACE/.vimrc $ASSET_DIR
+          cp -v $GITHUB_WORKSPACE/.zshrc $ASSET_DIR
+          cp -v $GITHUB_WORKSPACE/.tmux.conf $ASSET_DIR
           cp -R $GITHUB_WORKSPACE/.vim $ASSET_DIR
           tar cfz $ASSET_NAME $ASSET_DIR
    
