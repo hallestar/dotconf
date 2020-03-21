@@ -26,16 +26,18 @@ jobs:
     - name: Install vim plugins
       env:
         VUNDLE_ROOT: ".vim/bundle/"
+        ASSET_DIR: "conf"
+        ASSET_NAME: "conf.tar.gz"
       run: |
           echo $GITHUB_WORKSPACE
           echo pwd
-          mkdir -v vim
           mkdir -pv $VUNDLE_ROOT
           git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_ROOT/Vundle.vim
           vim --not-a-term -u $GITHUB_WORKSPACE/.vimrc +PluginInstall +qall
-          cp -R $GITHUB_WORKSPACE/.vimrc vim/
-          cp -R $GITHUB_WORKSPACE/.vim vim/
-          tar cfz vim.tar.gz vim
+          mkdir -v $ASSET_DIR
+          cp -R $GITHUB_WORKSPACE/.vimrc $ASSET_DIR
+          cp -R $GITHUB_WORKSPACE/.vim $ASSET_DIR
+          tar cfz $ASSET_NAME $ASSET_DIR
    
     - name: Create Release
       id: create_release
@@ -55,6 +57,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./vim.tar.gz
-        asset_name: vim.tar.gz
+        asset_path: ./conf.tar.gz
+        asset_name: conf.tar.gz
         asset_content_type: application/gzip

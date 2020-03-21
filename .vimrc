@@ -12,11 +12,11 @@ call vundle#begin(plugin_dir)
 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/TagHighlight'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 "Plugin 'Yggdroot/indentLine'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'rdnetto/YCM-Generator'
 "Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdtree'
@@ -25,7 +25,8 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'gmarik/vundle'
 "Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'preservim/nerdcommenter'
+
 Plugin 'xolox/vim-misc'  " required by lua.vim
 Plugin 'vim-scripts/lua.vim'
 "Plugin 'xolox/vim-lua-ftplugin'  " Lua file type plug-in for the Vim text editor
@@ -49,11 +50,11 @@ syntax on
 " theme
 let g:solarized_termcolors=256
 syntax enable
-set background=dark
 let solarized_dir = plugin_dir . 'vim-colors-solarized/colors/solarized.vim'
 if filereadable(solarized_dir)
     colorscheme solarized
 endif
+set background=dark
 " theme
 
 set nocompatible
@@ -329,6 +330,14 @@ let NERDTreeWinPos="right"
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""    
+"""""""" nerd commenter 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""    
+nmap <Leader>cc         注释当前行
+nmap <Leader>cn         nested注释
+nmap <Leader>c<space>   切换选定
+nmap <Leader>cu         取消注释
+nmap <Leader>ca         切换方式
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""" doxygenToolKit
