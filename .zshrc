@@ -101,6 +101,10 @@ if [[ -n $ZSH_CUSTOM ]]; then
 fi
 export EDITOR='vim'
 
+if [[ -f ~/.curlrc ]]; then
+    export HOMEBREW_CURLRC=~/.curlrc
+fi
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#36c6ff,bold,underline"
 
 # < ------------------------------------- env ------------------------------------------<
