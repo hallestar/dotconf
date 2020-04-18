@@ -105,6 +105,11 @@ if [[ -f ~/.curlrc ]]; then
     export HOMEBREW_CURLRC=~/.curlrc
 fi
 
+
+if [[ -d $HOME/.cargo/bin ]]; then
+    export PATH=$HOME/.cargo/bin:$PATH
+fi
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#36c6ff,bold,underline"
 
 # < ------------------------------------- env ------------------------------------------<
