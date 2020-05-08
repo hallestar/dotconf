@@ -31,7 +31,9 @@ is_target()
     Return 1
   IfWinActive,ahk_exe pycharm64.exe ; pycharm
     Return 1    
-  IfWinActive,ahk_exe WindowsTerminal.exe ; pycharm
+  IfWinActive,ahk_exe WindowsTerminal.exe ; wt
+    Return 1
+  IfWinActive,ahk_exe Code.exe ; vscode
     Return 1
 ;  IfWinActive,ahk_class SWT_Window0 ; Eclipse
 ;    Return 1
