@@ -35,6 +35,10 @@ is_target()
     Return 1
   IfWinActive,ahk_exe Code.exe ; vscode
     Return 1
+  IfWinActive,ahk_exe SecureCRT.exe ; scrt
+    Return 0
+  IfWinActive,ahk_class VirtualConsoleClass ;cmder
+    Return 1
 ;  IfWinActive,ahk_class SWT_Window0 ; Eclipse
 ;    Return 1
 ;   IfWinActive,ahk_class Xming X
