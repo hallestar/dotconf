@@ -29,11 +29,17 @@ is_target()
     Return 1
   IfWinActive,ahk_class Vim ; GVIM
     Return 1
-  IfWinActive,ahk_exe pycharm64.exe ; pycharm
+  IfWinActive,ahk_class SunAwtFrame ; jb
     Return 1    
   IfWinActive,ahk_exe WindowsTerminal.exe ; wt
     Return 1
   IfWinActive,ahk_exe Code.exe ; vscode
+    Return 1
+  IfWinActive,ahk_exe SecureCRT.exe ; scrt
+    Return 1
+  IfWinActive,ahk_class VirtualConsoleClass ;cmder
+    Return 1
+  IfWinActive,ahk_class TTOTAL_CMD ; total_cmd
     Return 1
 ;  IfWinActive,ahk_class SWT_Window0 ; Eclipse
 ;    Return 1
@@ -336,12 +342,12 @@ scroll_down()
 ;  Else
 ;    yank()
 ;  Return
-^/::
-  If is_target()
-    Send %A_ThisHotkey%
-  Else
-    undo()
-  Return  
+; ^/::
+;   If is_target()
+;     Send %A_ThisHotkey%
+;   Else
+;     undo()
+;   Return  
   
 ;$^{Space}::
 ;^vk20sc039::
@@ -413,3 +419,5 @@ scroll_down()
 CapsLock::
   Send {Esc}
 return
+
+^Space::ControlSend, ,^{Space Down}{Space Up},ahk_class Emacs	; Sends simulated keystrokes to a window or control

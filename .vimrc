@@ -36,6 +36,7 @@ Plugin 'vim-scripts/a.vim'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 "Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 
 call vundle#end()
@@ -52,9 +53,9 @@ let g:solarized_termcolors=256
 syntax enable
 let solarized_dir = plugin_dir . 'vim-colors-solarized/colors/solarized.vim'
 if filereadable(solarized_dir)
+    set background=dark
     colorscheme solarized
 endif
-set background=dark
 " theme
 
 set nocompatible
@@ -469,3 +470,14 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " for IdeaVim
 set visualbell
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_working_path_mode = 'ra'
+
+if has('win32')
+    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+elseif has('mac') ||has('unix')
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.a     " MacOSX/Linux
+endif
