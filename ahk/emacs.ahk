@@ -252,14 +252,10 @@ scroll_down()
   }
   Return  
 ^c::
- If is_target()
-   Send %A_ThisHotkey%
- Else
- {
-   If is_pre_x
-    ; ctrl + x, c to active
-     kill_region()
- }
+  If is_pre_x
+    kill_region()
+  Else
+    Send %A_ThisHotkey%
  Return  
 ^d::
   If is_target()
