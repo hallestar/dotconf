@@ -119,7 +119,8 @@ isearch_backward()
 kill_region()
 {
   Send ^x
-  global is_pre_spc = 0
+  ; global is_pre_spc = 0
+  global is_pre_x = 0
   Return
 }
 kill_ring_save()
@@ -250,15 +251,16 @@ scroll_down()
       forward_char()
   }
   Return  
-;^c::
-;  If is_target()
-;    Send %A_ThisHotkey%
-;  Else
-;  {
-;    If is_pre_x
-;      kill_emacs()
-;  }
-;  Return  
+^c::
+ If is_target()
+   Send %A_ThisHotkey%
+ Else
+ {
+   If is_pre_x
+    ; ctrl + x, c to active
+     kill_region()
+ }
+ Return  
 ^d::
   If is_target()
     Send %A_ThisHotkey%
