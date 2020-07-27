@@ -299,12 +299,12 @@ scroll_down()
   Else
     newline()
   Return
-^i::
-  If is_target()
-    Send %A_ThisHotkey%
-  Else
-    indent_for_tab_command()
-  Return
+;^i::
+;  If is_target()
+;    Send %A_ThisHotkey%
+;  Else
+;    indent_for_tab_command()
+;  Return
 ^s::
   If is_target()
     Send %A_ThisHotkey%
