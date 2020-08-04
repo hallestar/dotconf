@@ -119,7 +119,8 @@ isearch_backward()
 kill_region()
 {
   Send ^x
-  global is_pre_spc = 0
+  ; global is_pre_spc = 0
+  global is_pre_x = 0
   Return
 }
 kill_ring_save()
@@ -250,15 +251,12 @@ scroll_down()
       forward_char()
   }
   Return  
-;^c::
-;  If is_target()
-;    Send %A_ThisHotkey%
-;  Else
-;  {
-;    If is_pre_x
-;      kill_emacs()
-;  }
-;  Return  
+^c::
+  If is_pre_x
+    kill_region()
+  Else
+    Send %A_ThisHotkey%
+ Return  
 ^d::
   If is_target()
     Send %A_ThisHotkey%
@@ -301,12 +299,12 @@ scroll_down()
   Else
     newline()
   Return
-^i::
-  If is_target()
-    Send %A_ThisHotkey%
-  Else
-    indent_for_tab_command()
-  Return
+;^i::
+;  If is_target()
+;    Send %A_ThisHotkey%
+;  Else
+;    indent_for_tab_command()
+;  Return
 ^s::
   If is_target()
     Send %A_ThisHotkey%
