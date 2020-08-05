@@ -34,9 +34,14 @@ Plugin 'vim-scripts/lua.vim'
 Plugin 'vim-scripts/a.vim'
 "Plugin 'Shougo/neocomplete.vim'
 "Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 "Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
 
 
 call vundle#end()
