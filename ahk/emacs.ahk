@@ -41,6 +41,8 @@ is_target()
     Return 1
   IfWinActive,ahk_class TTOTAL_CMD ; total_cmd
     Return 1
+  IfWinActive,ahk_exe devenv.exe ; visual studio
+    Return 1
 ;  IfWinActive,ahk_class SWT_Window0 ; Eclipse
 ;    Return 1
 ;   IfWinActive,ahk_class Xming X
