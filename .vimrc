@@ -16,7 +16,7 @@ Plugin 'vim-scripts/TagHighlight'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 "Plugin 'Yggdroot/indentLine'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'rdnetto/YCM-Generator'
 "Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdtree'
@@ -34,9 +34,14 @@ Plugin 'vim-scripts/lua.vim'
 Plugin 'vim-scripts/a.vim'
 "Plugin 'Shougo/neocomplete.vim'
 "Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 "Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
 
 
 call vundle#end()
@@ -202,6 +207,9 @@ set expandtab
 set number
 set history=1000
 
+autocmd FileType python set tabstop=4 | set expandtab | set autoindent 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -287,7 +295,7 @@ nmap <C-@>i :cs find i ^<C-R>=expand("<cword>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 """"""""""""""""""""""""""""""""""""""""""
-"""YouComlementMe
+"""YouCompleteMe
 """"""""""""""""""""""""""""""""""""""""""
 let g:ycm_global_ycm_extra_conf= '~/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -295,6 +303,15 @@ let g:syntastic_error_symbol = '✗'
 let g:ycm_confirm_extra_conf = 0
 highlight YcmErrorLine guibg=#ffefef
 highlight YcmErrorLine guibg=#efffef
+
+let g:ycm_python_interpreter_path = '/usr/bin/python'
+let g:ycm_python_sys_path = []
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
+let g:ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
+
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -474,7 +491,7 @@ set visualbell
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctrlp.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'a'
 
 if has('win32')
     set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
