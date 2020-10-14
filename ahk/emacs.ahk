@@ -43,6 +43,8 @@ is_target()
     Return 1
   IfWinActive,ahk_exe devenv.exe ; visual studio
     Return 1
+  IfWinActive,ahk_exe pycharm64.exe
+    Return 1
 ;  IfWinActive,ahk_class SWT_Window0 ; Eclipse
 ;    Return 1
 ;   IfWinActive,ahk_class Xming X
