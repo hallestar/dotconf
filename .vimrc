@@ -41,6 +41,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'tpope/vim-sleuth'
 
 
 
@@ -206,6 +207,9 @@ set shiftwidth=4
 set expandtab
 set number
 set history=1000
+set list
+set listchars=tab:>-
+
 
 autocmd FileType python set tabstop=4 | set expandtab | set autoindent 
 
