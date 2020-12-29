@@ -2,7 +2,15 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="agnoster"
 
-plugins=(git python tmux svn zsh-autosuggestions autojump)
+plugins=(
+    git
+    python
+    tmux
+    svn
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    autojump
+)
 
 
 export HZC_PATH="$HOME/install/bin"
