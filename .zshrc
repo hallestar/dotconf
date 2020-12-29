@@ -117,3 +117,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#36c6ff,bold,underline"
 
 source ~/shell_config.sh
 
+
+[[ -s "$HOME.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+autoload -U +X bashcompinit && bashcompinit
