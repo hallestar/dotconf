@@ -13,7 +13,7 @@ plugins=(
 )
 
 
-export HZC_PATH="$HOME/install/bin"
+export HZC_PATH="$HOME/install/bin":/opt/homebrew/bin
 export PATH="$HZC_PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 source $ZSH/oh-my-zsh.sh
@@ -29,7 +29,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 export PATH=$HOME/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 if [[ -d $PYENV_ROOT ]]; then
-    export PATH="$PYENV_ROOT/bin:$PATH"
+    #export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
     #eval "$(pyenv virtualenv-init -)"
 fi
@@ -129,3 +130,5 @@ source ~/shell_config.sh
 [[ -s "$HOME.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 autoload -U +X bashcompinit && bashcompinit
+
+

@@ -58,3 +58,8 @@ target/
 
 # vim
 *.sw*
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
