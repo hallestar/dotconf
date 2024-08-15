@@ -31,7 +31,7 @@ is_target()
     Return 1
   IfWinActive,ahk_class SunAwtFrame ; jb
     Return 1    
-  IfWinActive,ahk_exe WindowsTerminal.exe ; wt
+  IfWinActive,ahk_exe WindowsTerminal.exe ;
     Return 1
   IfWinActive,ahk_exe Code.exe ; vscode
     Return 1
@@ -44,6 +44,46 @@ is_target()
   IfWinActive,ahk_exe devenv.exe ; visual studio
     Return 1
   IfWinActive,ahk_exe pycharm64.exe
+    Return 1
+  ifWinActive,ahk_exe WeTERM.exe
+    Return 1
+  ifWinActive,ahk_exe winhex.exe
+    Return 1
+  IfWinActive ahk_exe rider64.exe
+    Return 1
+  IfWinActive ahk_exe UnrealEditor.exe
+    Return 1
+  IfWinActive ahk_exe Figma.exe
+    Return 1
+  IfWinActive ahk_exe lapce.exe
+    Return 1
+  IfWinActive ahk_exe Obsidian.exe
+    Return 1
+  IfWinActive ahk_exe sublime.exe
+    Return 1
+  IfWinActive ahk_exe nvim-qt.exe
+    Return 1
+  ifWinActive ahk_exe Notion.exe
+    Return 1
+  ifWinActive ahk_exe Obsidian.exe
+    Return 1
+  ifWinActive ahk_exe FluentSearch.exe
+    Return 1
+  ifWinActive ahk_class PPTFrameClass
+    Return 1
+  ifWinActive ahk_class XGAME
+    Return 1
+  ifWinActive ahk_exe PotPlayerMini64.exe
+    Return 1
+  ifWinActive ahk_exe Last Epoch.exe
+    Return 1
+  ifWinActive ahk_exe Wireshark.exe
+    Return 1
+  ifWinActive ahk_class UnrealWindow
+    Return 1
+  ifWinActive ahk_class dbgviewClass
+    Return 1
+  ifWinActive ahk_exe StarUML.exe
     Return 1
 ;  IfWinActive,ahk_class SWT_Window0 ; Eclipse
 ;    Return 1
