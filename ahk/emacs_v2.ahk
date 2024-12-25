@@ -88,6 +88,9 @@ is_target() {
     if WinActive("ahk_exe sublime.exe") {
         return true
     }
+    if WinActive("ahk_exe sublime_text.exe") {
+        return true
+    }
     if WinActive("ahk_exe nvim-qt.exe") {
         return true
     }
@@ -121,6 +124,16 @@ is_target() {
     if WinActive("ahk_exe StarUML.exe") {
         return true
     }
+    if WinActive("ahk_exe Cursor.exe") {
+      return true
+    }
+    if WinActive("ahk_exe sublime_text.exe") {
+      return true
+    }
+    if WinActive("ahk_class Qt660QWindowIcon") {
+        return true
+    }
+
     ;  HotIfWinActive ahk_class SWT_Window0 ; Eclipse
     ;    Return 1
     ;   HotIfWinActive ahk_class Xming X
@@ -370,7 +383,6 @@ scroll_down() {
 
 ^x::
 {
-    global
     if (is_target()) {
         Send A_ThisHotkey
     } else {

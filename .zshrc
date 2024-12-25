@@ -95,7 +95,15 @@ alias l='ls -CF'
 alias grep='grep --color=auto'
 alias agpp="ag --cpp"
 alias ag="ag --path-to-ignore ~/.ag/.ignore"
-alias tmux="tmux -2"
+# alias tmux="tmux -2"
+
+
+if [ "$TERM" = "xterm" ]; then
+  export TERM=xterm-256color
+fi
+
+alias tmux='tmux -2'
+alias tmux='tmux -u'
 
 # < ------------------------------------- alias ------------------------------------------<
 
